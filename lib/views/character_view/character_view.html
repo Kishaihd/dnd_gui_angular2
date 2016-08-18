@@ -1,0 +1,16 @@
+<style>
+
+</style>
+
+<h1>Character View</h1>
+
+{{characterService.test | uppercase}}
+{{characterService.newCharacter.abilitiesList[0]}}
+
+<input #myInput type="text" (keyup.enter)="submit()">
+<button (click)="characterService.test = myInput.value">Submit</button>
+
+
+
+<abilities [abList]="characterService.entity.abilitiesList"></abilities>
+<ability [ability]="ability"></ability>

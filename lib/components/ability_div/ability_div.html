@@ -1,9 +1,17 @@
 <style>
-    .ability-class {
-        border: 1px black;
+    :host {
+        display: inline-flex;
+        justify-content: space-between;
+        align-content: space-between;
+        align-items: center;
+        border: 1px dotted black;
+    }
+
+    .abscore {
+        text-align: center;
+        width: 30px;
     }
 </style>
 
-<div class="ability-class">
-    <span>{{ability.name}}: {{ability.score}}</span>
-</div>
+{{ability.name}}:<input class="abscore" type="text" [(ngModel)]="score">
+

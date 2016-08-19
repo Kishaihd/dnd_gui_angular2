@@ -1,9 +1,22 @@
 <style>
+    .ab-box {
+        display: flex;
+        flex-flow: column nowrap;
+        margin: 2px;
+        padding: 1px;
+        width: 10em;
+        border: solid black 1px;
+    }
     .abilities-class {
-        padding: 2px;
+        display: flex;
+        align-content: space-between;
+        flex-flow: column nowrap;
+        padding: 1px;
     }
 </style>
 
-<div class="abilities-class"  *ngFor="let ability of abList">
-    <ability-div [ability]="ability"></ability-div>
+<div class="ab-box">
+    <div class="abilities-class" *ngFor="let ability of abList">
+        <ability-div [ability]="ability"></ability-div>
+    </div>
 </div>

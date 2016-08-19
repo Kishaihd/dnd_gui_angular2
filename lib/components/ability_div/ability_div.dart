@@ -27,4 +27,9 @@ class AbilityDiv {
 //      ability.setAbilityScore(score);
 //    }
   }
+
+  String get score => ability.score.toString();
+  void set score(String value) {
+    ability.score = int.parse(value, onError: (_) => 0);
+  }
 }

@@ -14,7 +14,7 @@ class Ability {
   int _tempScore;
   int _tempMod;
 
-  Map<String, int> _modList;
+  Map<String, int> _modList = {};
 
   Ability([this._name, this._score = 0]) {
     _tempScore = _score;
@@ -30,6 +30,10 @@ class Ability {
 
   String get name => _name;
   int get score => _score == null ? 0 : calcAbilityScore();
+  void set score(int value) {
+    print("SCORE: $value");
+    setAbilityScore(value);
+  }
   int get mod => _mod;
   int get limit => LIMIT;
 

@@ -8,8 +8,8 @@ import '../../model/ability.dart';
 
 @Component(selector: 'abilities-div',
     templateUrl: 'abilities_div.html',
-    directives: const [AbilityDiv],
-    providers: const [CharacterService]
+    directives: const [AbilityDiv]
+
 )
 class AbilitiesDiv {
   final LoggerService _log;

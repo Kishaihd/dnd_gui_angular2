@@ -17,6 +17,6 @@ class AbilitiesView {
 
   AbilitiesView(LoggerService this._log) {
     _log.info("$runtimeType()");
-    abList = CharacterService.newCharacter.abilitiesList;
+    //abList = CharacterService.newCharacter.abilitiesList;
   }
 }

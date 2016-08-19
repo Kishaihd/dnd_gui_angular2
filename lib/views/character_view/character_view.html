@@ -1,9 +1,13 @@
 <style>
+  :host {
 
+
+    border: solid darkred 1px;
+  }
 </style>
 
 <h1>Character View</h1>
-
+<button (click)="generate()">Generate</button>
 {{characterService.test | uppercase}}
 {{characterService.newCharacter.abilitiesList[0]}}
 

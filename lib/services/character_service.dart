@@ -12,5 +12,6 @@ class CharacterService {
 
   CharacterService(LoggerService this._log) {
     _log.info("$runtimeType()");
+    //newCharacter = new Entity();
   }
 }

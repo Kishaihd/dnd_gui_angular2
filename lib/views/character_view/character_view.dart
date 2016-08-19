@@ -3,10 +3,12 @@ import 'package:angular2/angular2.dart';
 import '../../services/logger_service.dart';
 import '../../services/character_service.dart';
 
+import '../../components/abilities_div/abilities_div.dart';
+
 @Component(selector: 'character-view',
     templateUrl: 'character_view.html',
-    directives: const [],
-    providers: const []
+    directives: const [AbilitiesDiv],
+    providers: const [] //CharacterService
 )
 class CharacterView {
   final LoggerService _log;
@@ -20,7 +22,7 @@ class CharacterView {
 
   void submit() {
     _log.info("$runtimeType()::submit()");
-
+    //List al = characterService.newCharacter.abilitiesList; // For testing
     characterService.test = myInput.nativeElement.value;
   }
 }

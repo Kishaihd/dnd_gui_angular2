@@ -515,7 +515,7 @@ class Entity {
     _size = race.size;
     _type = race.type;
   }
-  void set allignment(String allignment) { _alignment.setByString(allignment);}
+  void set alignment(String alignment) { _alignment.setByString(alignment);}
   void setAbilitiesByList(List<Ability> incomingList) {
     if (incomingList[0].name == "Strength") {
       setAbilitiesByObject(incomingList[0], incomingList[1], incomingList[2], incomingList[3], incomingList[4], incomingList[5]);

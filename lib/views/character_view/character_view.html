@@ -1,18 +1,18 @@
 <style>
   :host {
-
-
-    border: solid darkred 1px;
+    border: solid #8b1d0b 1px;
   }
 </style>
 
 <h1>Character View</h1>
-<button (click)="generate()">Generate</button>
+<!--button (click)="generate()">Generate</button>
 {{characterService.test | uppercase}}
-{{characterService.newCharacter.abilitiesList[0]}}
+{{characterService.newCharacter.abilitiesList[0]}} -->
+<input #nameInput type="text" placeholder="Name..." [(ngModel)]="name">  <input #alignmentInput type="text" placeholder="Alignment..." [(ngModel)]="alignment">
 
-<input #myInput type="text" (keyup.enter)="submit()">
-<button (click)="characterService.test = myInput.value">Submit</button>
+
+<!--input #myInput type="text" (keyup.enter)="submit()">
+<button (click)="characterService.test = myInput.value">Submit</button-->
 
 
 

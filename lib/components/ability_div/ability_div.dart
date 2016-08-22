@@ -32,4 +32,6 @@ class AbilityDiv {
   void set score(String value) {
     ability.score = int.parse(value, onError: (_) => 0);
   }
+
+  String get abMod => ability.modAsString();
 }

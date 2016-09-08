@@ -1,10 +1,13 @@
 library model.entity;
 
+import '../services/logger_service.dart';
+
 import 'ability.dart';
 import 'alignment.dart';
 import 'background.dart';
 import 'character_class.dart';
 import 'conditions.dart';
+import 'deity.dart';
 import 'equipment.dart';
 import 'features.dart';
 import 'modify.dart';
@@ -25,8 +28,10 @@ class Entity {
   String _size;
   Speed _movement;
 
+
   // Patron attributes
-  String _deity;
+  Deity _deity;
+  //String _deity;
   String _patron;
 
   // Game attributes
@@ -40,6 +45,31 @@ class Entity {
   bool _unarmored;
   int _proficiencyBonus;
   String _status;
+
+  // Checklist to see if character creation is done.
+  Map<String, bool> _doneExtras = {
+    "hasDeity" : false,
+    "hasPatron" : false
+  };
+  Map<String, bool> _doneEssentials = {
+    "hasName" : false,
+    "hasAbilities" : false,
+    "hasSkills" : false,
+    "hasClass" : false,
+    "hasRace" : false,
+    "hasBackground" : false,
+    "hasFeatureList" : false,
+    "hasType" : false,
+    "hasAlignment" : false,
+    "hasSize" : false,
+    "hasMovement" : false,
+    "hasLevel" : false,
+    "hasHitDie" : false,
+    "hasHP" : false,
+    "hasAC" : false,
+    "hasProficiencyBonus" : false,
+    "hasStatus" : false
+  };
 
   // Map of modified attributes
   List<Mod> _modList;
@@ -99,14 +129,13 @@ class Entity {
   // Does not include Constitution.
   List<int> abilitiesForSkills = [];
 
-  bool _charCreationIsCreated = false;
-
   Entity() {
     _status = "Normal";
     _level = 1;
 
     _alignment = new Alignment(); // Default. Set after creation.
 
+    _movement = new Speed();
     abilities = [Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma];
 
     Athletics = new Skill.fromBlank("Athletics");
@@ -139,6 +168,26 @@ class Entity {
     _armorClass = BASE_AC;
     _unarmored = true;
 
+
+    /// todo: actually check done-ness. (1/2)
+//    _doneEssentials["hasName"] = true;
+//    _doneEssentials["hasAbilities"] = true;
+//    _doneEssentials["hasSkills"] = true;
+//    _doneEssentials["hasClass"] = true;
+//    _doneEssentials["hasRace"] = true;
+//    //  _doneEssentials["hasBackground"] = true;
+//    //  _doneEssentials["hasFeatureList"] = true;
+//    _doneEssentials["hasType"] = true;
+//    _doneEssentials["hasAlignment"] = true;
+//    _doneEssentials["hasSize"] = true;
+//    _doneEssentials["hasMovement"] = true;
+    _doneEssentials["hasLevel"] = true;
+//    _doneEssentials["hasHitDie"] = true;
+//    _doneEssentials["hasHP"] = true;
+    _doneEssentials["hasAC"] = true;
+//    _doneEssentials["hasProficiencyBonus"] = true;
+    _doneEssentials["hasStatus"] = true;
+
   }
 
 
@@ -146,6 +195,7 @@ class Entity {
   // Name, Character's class, Race, ability scores.
 //  Entity.parameterized(this._name, this._charRace, this._charClass, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma) {
   Entity.parameterized(this._name, Race race, CharClass characterClass, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma) {
+
     _status = "Normal";
     _level = 1;
 
@@ -208,6 +258,26 @@ class Entity {
     skillsPlusAbilities(_charRace, _charClass);
 
     _armorClass = calcArmorClass();
+
+
+    /// todo: actually check done-ness. (2/2)
+    _doneEssentials["hasName"] = true;
+    _doneEssentials["hasAbilities"] = true;
+    _doneEssentials["hasSkills"] = true;
+    _doneEssentials["hasClass"] = true;
+    _doneEssentials["hasRace"] = true;
+  //  _doneEssentials["hasBackground"] = true;
+    _doneEssentials["hasFeatureList"] = true;
+    _doneEssentials["hasType"] = true;
+    _doneEssentials["hasAlignment"] = true;
+    _doneEssentials["hasSize"] = true;
+    _doneEssentials["hasMovement"] = true;
+    _doneEssentials["hasLevel"] = true;
+    _doneEssentials["hasHitDie"] = true;
+    _doneEssentials["hasHP"] = true;
+    _doneEssentials["hasAC"] = true;
+    _doneEssentials["hasProficiencyBonus"] = true;
+    _doneEssentials["hasStatus"] = true;
 
   } // End constructor.
 
@@ -323,17 +393,18 @@ class Entity {
         } // End if
       } // End for
     }); // End .forEach
+    _doneEssentials["hasRace"] = true;
   } // End addRacialAbilities()
 
   @override String toString() {
     StringBuffer sb = new StringBuffer();
 
-    sb.writeln("Name: ${capitalize(name)}   Race: ${capitalize(raceName)}   Class: ${capitalize(className)}  Level: $level");
-    sb.writeln("Alignment: ${capitalize(alignment)}   Size: ${capitalize(size)}   Hit Die: ${hitDie}");
+    sb.writeln("Name: ${capitalize(_name)}   Race: ${capitalize(_charRace.name)}   Class: ${capitalize(_charClass.name)}  Level: $_level");
+    sb.writeln("Alignment: ${capitalize(_alignment.calcAlignment())}   Size: ${capitalize(_size)}   Hit Die: ${_hitDie}");
     sb.writeln("HP: $_maxHitPoints   Armor Class: $_armorClass   Speed: $_movement");
-    sb.writeln("Proficiency Bonus: $_proficiencyBonus   Status: ${capitalize(status)}");
+    sb.writeln("Proficiency Bonus: $_proficiencyBonus   Status: ${capitalize(_status)}");
     sb.writeln(statBlock());
-    sb.writeln("Deity: ${capitalize(deity)} Patron: ${capitalize(patron)}");
+    sb.writeln("Deity: ${capitalize(_deity.name)} Patron: ${capitalize(_patron)}");
     sb.writeln("____________________");
     sb.writeln("Armor: ${_equippedList["torso"]}"); // {armorList["torso"].name}
     sb.writeln("____________________");
@@ -354,7 +425,7 @@ class Entity {
   }
 
   void chooseSkillProficiency(Skill skill) {
-    skill.isClassSkill(_charClass.proficiencyBonus);
+    skill.selectSkill(_charClass.proficiencyBonus);
   }
 
 //  void refactor() {
@@ -411,6 +482,7 @@ class Entity {
 
   void changeStatus(String newStatus) {
     _status = newStatus;
+    _doneEssentials["hasStatus"] = true;
     // Throw in some if (_status == _____)
     // statements to add mechanics and maybe flavor text.
   }
@@ -429,8 +501,9 @@ class Entity {
     }
   }
 
-  // Getters
+  // Getters ===================================================================
   int get level => _level;
+  CharClass get characterClass => _charClass;
   int get strength => Strength.score;
   int get dexterity => Dexterity.score;
   int get constitution => Constitution.score;
@@ -451,12 +524,110 @@ class Entity {
   String get size => _charRace.size;
   String get raceName => _charRace.name;
   String get className => _charClass.name;
+  //List<String> get classList => CharClass.classList;
   String get creatureType => _type == null ? "humanoid" : _type; // eg. Humanoid, Abberation, Construct etc.
   String get alignment => _alignment.score;
+  Alignment get alignmentObject => _alignment;
+  List<String> get alignmentChoices => Alignment.alignments;
   String get status => _status;
-  String get deity => _deity == null ? "None" : _deity;
+  Deity get deity => _deity == null ? "None" : _deity;
   String get patron => _patron == null ? "None" : _patron;
-  bool get isCompleted => _charCreationIsCreated;
+  /// todo: Verify isComplete() will actually work.
+  int numIncomplete() {
+    int doneIsZero;
+
+    if (_charRace != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero = 1;
+    }
+
+    if (_charClass != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    abilities.forEach((Ability ab) {
+      if (ab == null) {
+        doneIsZero += 1;
+      }
+    });
+
+    if (_name != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    if (_type != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    if (_size != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    if (_alignment != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    if (_hitDie != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    if (_status != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    if (_movement != null) {
+      doneIsZero = 0;
+    }
+    else {
+      doneIsZero += 1;
+    }
+
+    return doneIsZero;
+  }
+
+  bool isCompleted() {
+    abilitiesList.forEach((Ability ab) {
+      if (ab != null && ab.score > 0) {
+        _doneEssentials["hasAbilities"] = true;
+      }
+      else {
+        _doneEssentials["hasAbilities"] = false;
+      }
+    });
+    _doneEssentials.forEach((String reason, bool truth) {
+      if (truth == false) {
+        print("Character is incomplete.");
+        print("${reason}: ${truth}\n");
+        return false;
+      }
+      else {
+        return true;
+      }
+    });
+  }
 //  // "Generic" getter that returns any single skill and value.
 //  int getSkill(String skillName) {
 //    skillName = skillName.toLowerCase();
@@ -490,20 +661,30 @@ class Entity {
 //  void set wisdom(int wis) { _wisdom = wis;}
 //  void set charisma(int cha) { _charisma = cha;}
   void set currentHP(int hp) { _currentHitPoints = hp;}
-  void set size(String size) { _size = size;}
+  void set size(String size) {
+    _size = size;
+    _doneEssentials["hasSize"] = true;
+  }
   void set level(int lvl) { _level = lvl;}
   void set HD(int hd) {
     _hitDie = hd;
+    _doneEssentials["hasHitDie"] = true;
   }
 //  void set maxHP(int hpMax) {_maxHitPoints = hpMax;}
   //void set AC(int ac) { _armorClass = ac;} // Calculated automatically.
   //void set proficiencyBonus(int prof) { _proficiency = prof;}
   //void set movement => _movement
-  void set name(String name) { _name = name;}
+  void set name(String name) {
+    _name = name;
+    _doneEssentials["hasName"] = true;
+  }
   void set characterClass(CharClass charClass) {
     _charClass = charClass;
     _proficiencyBonus = charClass.proficiencyBonus;
     _hitDie = charClass.hitDie;
+    _doneEssentials["hasClass"] = true;
+    _doneEssentials["hasProficiencyBonus"] = true;
+    _doneEssentials["hasHitDie"] = true;
   }
   void set race(Race race) {
     _charRace = race;
@@ -514,8 +695,17 @@ class Entity {
     }
     _size = race.size;
     _type = race.type;
+
+    _doneEssentials["hasRace"] = true;
+    _doneEssentials["hasMovement"] = true;
+    _doneEssentials["hasType"] = true;
+    _doneEssentials["hasSize"] = true;
   }
-  void set alignment(String alignment) { _alignment.setByString(alignment);}
+  void set alignment(String alignment) {
+    _alignment.score = alignment;
+//    _alignment.setByString(alignment);
+    _doneEssentials["hasAlignment"] = true;
+  }
   void setAbilitiesByList(List<Ability> incomingList) {
     if (incomingList[0].name == "Strength") {
       setAbilitiesByObject(incomingList[0], incomingList[1], incomingList[2], incomingList[3], incomingList[4], incomingList[5]);
@@ -529,6 +719,7 @@ class Entity {
 //      });
     abilities = [Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma];
     abilitiesForSkills = [Strength.mod, Dexterity.mod, Intelligence.mod, Wisdom.mod, Charisma.mod];
+    _doneEssentials["hasAbilities"] = true;
   }
 
   void setAbilitiesByInt(int str, int dex, int con, int intl, int wis, int cha) {
@@ -540,6 +731,7 @@ class Entity {
     Charisma.setAbilityScore(cha);
     abilities = [Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma];
     abilitiesForSkills = [Strength.mod, Dexterity.mod, Intelligence.mod, Wisdom.mod, Charisma.mod];
+    _doneEssentials["hasAbilities"] = true;
   }
 
   void setAbilitiesByObject(Ability str, Ability dex, Ability con, Ability int, Ability wis, Ability cha) {
@@ -551,21 +743,38 @@ class Entity {
     Charisma.setAbilityScore(cha.score);
     abilities = [Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma];
     abilitiesForSkills = [Strength.mod, Dexterity.mod, Intelligence.mod, Wisdom.mod, Charisma.mod];
+    _doneEssentials["hasAbilities"] = true;
   }
 //  void set type(String type) { _type = type;} // eg. Humanoid, Abberation, Construct etc.
-  void set status(String status) { _status = status;}
-  void set deity(String deity) {_deity = deity;}
-  void set patron(String patron) {_patron = patron;}
+  void set status(String status) {
+    _status = status;
+    _doneEssentials["hasStatus"] = true;
+  }
+  void set deity(Deity d) {
+    _deity = d;
+    if (_patron == null || _patron == "") {
+      _patron = d.name;
+    }
+    _doneEssentials["hasDeity"] = true;
+  }
+//  void set deity(String deity) {
+//    _deity = deity;
+//    _doneEssentials["hasDeity"] = true;
+//  }
+  void set patron(String patron) {
+    _patron = patron;
+    _doneEssentials["hasPatron"] = true;
+  }
   void calcHpAtLevelOne() {
     if (_hitDie > 0) {
       _maxHitPoints = Constitution.mod + _hitDie;
+      _doneEssentials["hasHP"] = true;
+    }
+    else {
+      /// todo: this should use the logger!
+      print("No HP at level one!");
     }
   }
-
-  void set isCompleted(bool isDone) {
-    _charCreationIsCreated = isDone;
-  }
-
 
   void handleMod(Mod mod) {
     _modList.add(mod);
@@ -643,9 +852,6 @@ class Entity {
   }
 
 } // End class Entity
-
-
-
 
 
 

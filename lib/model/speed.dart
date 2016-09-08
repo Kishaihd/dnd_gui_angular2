@@ -95,6 +95,7 @@ class Speed {
       return speed;
     }
 
+    ///todo: verify swim speed calculations
     else return calculateLandSpeed(); // Is this correct?
   }
 

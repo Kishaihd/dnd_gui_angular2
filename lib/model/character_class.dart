@@ -2,6 +2,7 @@ library model.character_class;
 
 import 'ability.dart';
 import 'dart:convert';
+import 'features.dart';
 
 class CharClass {
   final int TIER_ONE = 4;
@@ -11,7 +12,13 @@ class CharClass {
   final int TIER_FIVE = 20;
   final int BASE_SPELL_MOD = 8;
 
-  String CLASS_FEATURES_PATH;
+//  static const List<String> classList = const [
+//    "Fighter"
+//  ];
+
+  //String CLASS_FEATURES_PATH;
+  Feature _feature;
+  FeatureList _featureList;
 
   String _name;
   int _hitDie;
@@ -275,7 +282,7 @@ class CharClass {
   bool get knowsSpells => _knowsSpells;
   String get numSkills => _numberOfSkills;      // Use these two together!
   List<String> get skills => _skillProficiency; // Use these two together!
-
+  FeatureList get classFeatures => _featureList;
   //  String get numAndSkills =>
 
   List<String> get armors => _armorProficiency;
@@ -287,12 +294,15 @@ class CharClass {
   String get casterStat => _casterStat;
   int get cantripsKnown => _cantripsKnown;
   int get baseSpellMod => BASE_SPELL_MOD;
-  String get FEATURES_PATH => CLASS_FEATURES_PATH;
+  //String get FEATURES_PATH => CLASS_FEATURES_PATH;
 
 
   int getSpellSlotsAt(int spellLevel) => spellSlotsPerLevel[spellLevel];
 
   // Setters.
+  void setClassFeaturesFromList(List<List<Map<String, String>>> fl) {
+    _featureList = new FeatureList.fromList(_name, fl);
+  }
   void setLevel(int level) {_level = level;}
   void setSpellSlotsAtLevel(int spellLevel, int numberOfSlots) {
     spellSlotsPerLevel[spellLevel] = numberOfSlots;
@@ -317,9 +327,12 @@ class Warlock extends CharClass {
   int _spellSlotLevel;
   int _invocationsKnown = 0;
 
-  final String CLASS_FEATURES_PATH = "model/warlock_class_features.json";
+  //final String CLASS_FEATURES_PATH = "../data/class_features.json";
+  //final String CLASS_FEATURES_PATH = "warlockFeatures";
 
-  List<Map<String, String>> class_features = [];
+  //List<Map<String, String>> class_features = [];
+  //FeatureList class_features;
+
 
   List<String> patronChoices = ["The Fiend", "The Archfey", "The Great Old One"];
 
@@ -351,7 +364,7 @@ class Warlock extends CharClass {
     ];
     _description = "The Warlock is a wielder of magic that is derived from a bargain with an extraplanar entity.";
 
-    class_features = JSON.decode(FEATURES_PATH);
+    //class_features = JSON.decode(FEATURES_PATH);
 
     calcProficiencyBonus();
     refactor();
@@ -516,28 +529,29 @@ class Ranger extends CharClass {
 
   Ranger([int level = 1]) : super(level) {
     _name = "Ranger";
-    _hitDie = 8;
+    _hitDie = 10;
     _level = level;
     _casterStat = "Wisdom";
-    _primaryAbilities = ["Charisma"];
-    _numberOfSkills = "Choose two skills from: ";
+    _primaryAbilities = ["Dexterity", "Wisdom"];
+    _numberOfSkills = "Choose three skills from: ";
     _skillProficiency = [
-      "Arcana",
-      "Deception",
-      "History",
-      "Intimidation",
+      "Animal Handling",
+      "Athletics",
+      "Insight",
       "Investigation",
       "Nature",
-      "Religion"
+      "Perception",
+      "Stealth",
+      "Survival"
     ];
-    _armorProficiency = ["Light Armor"];
-    _weaponProficiency = ["Simple Weapons"];
+    _armorProficiency = ["Light Armor", "Medium Armor", "Shields"];
+    _weaponProficiency = ["Simple Weapons", "Martial Weapons"];
     _toolProficiency = ["None"];
     _savingThrowProficiency = [
-      "Wisdom",
-      "Charisma"
+      "Strength",
+      "Dexterity"
     ];
-    _description = " ";
+    _description = "A warrior who uses martial prowess and nature magic to combat threats on the edges of civilization.";
 
     calcProficiencyBonus();
 //  calcCasterStats(Entity entity.Charisma);

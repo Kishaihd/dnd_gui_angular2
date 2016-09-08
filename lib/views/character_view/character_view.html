@@ -1,20 +1,56 @@
 <style>
-  :host {
-    border: solid #8b1d0b 1px;
+  .body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column nowrap;
+      padding: 4px;
+      margin: 2px;
+      border: 1px solid black;
   }
+
+  .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35%;
+      flex-flow: row wrap;
+      padding: 2px;
+      margin: 2px;
+  }
+
+    .active {
+
+    }
+
+    #alignment-box {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        padding: 2px;
+        margin: 2px;
+        height: 150px;
+        width: 150px;
+    }
 </style>
 
-<h1>Character View</h1>
+<div class="body">
+<h1> Ch </h1>
 <!--button (click)="generate()">Generate</button>
 {{characterService.test | uppercase}}
 {{characterService.newCharacter.abilitiesList[0]}} -->
-<input #nameInput type="text" placeholder="Name..." [(ngModel)]="name">  <input #alignmentInput type="text" placeholder="Alignment..." [(ngModel)]="alignment">
-
-
+<input class="box" #nameInput type="text" placeholder="Name..." [(ngModel)]="name" autofocus="true">
+<!--select #alignmentInput (ngModelChange)="character.alignmentObject.setByString($event)"-->
+<!--<select class="box" #alignmentInput [(ngModel)]="character.alignment">-->
+    <!--<option *ngFor="let al of character.alignmentChoices" [value]="al">{{al}}</option> &lt;!&ndash; onselect="character.alignmentObject.setByString(al)" &ndash;&gt;-->
+<!--</select>-->
+    <vu-selector class="box" style="border: 2px solid black;" [(selectedIndex)]="alignmentSelected">
+        <button *ngFor="let alignment of character.alignmentChoices" vuSelectable id="alignment-box">
+            <h5 class="list-group-item-heading">{{ alignment }}</h5>
+            <!--p class="list-group-item-text">{{ boner }}</p-->
+        </button>
+    </vu-selector>
 <!--input #myInput type="text" (keyup.enter)="submit()">
 <button (click)="characterService.test = myInput.value">Submit</button-->
 
-
-
-<abilities-div [abList]="characterService.newCharacter.abilitiesList"></abilities-div>
-<!--ability-- [ability]="ability"></ability-->
+</div>

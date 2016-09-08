@@ -66,13 +66,15 @@ class Skill /*implements Comparable*/ {
     _modList.remove(name);
   }
 
-  void isClassSkill(int proficiencyBonus) {
+  //void isClassSkill(int proficiencyBonus) {
+  void selectSkill(int proficiencyBonus) {
     //increaseValue(proficiencyBonus);
     _modList.putIfAbsent("Class Skill", () => proficiencyBonus);
     _isAClassSkill = true;
   }
 
-  void notClassSkill() {
+  //void notClassSkill() {
+  void deselectSkill() {
     //_value = _originalValue;
     if (_modList.containsKey("Class Skill")) {
       _modList.remove("Class Skill");

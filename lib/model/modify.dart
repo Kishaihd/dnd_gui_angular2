@@ -11,6 +11,18 @@ String capitalize(String word) {
   }
 }
 
+String capitalizeAllWords(String multipleWords) {
+  List<String> words = multipleWords.split(" ");
+  String newWords = "";
+
+  words.forEach((String w) {
+    capitalize(w);
+    newWords += w;
+  });
+
+  return newWords;
+}
+
 // This class will handle extraneous data modification/manipulations that come from sources
 // such as, items/equipment, conditional/combat bonuses and modifiers.
 

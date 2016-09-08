@@ -1,17 +1,33 @@
 <style>
     :host {
-        display: inline-flex;
-        justify-content: space-between;
-        align-content: space-between;
-        align-items: center;
-        border: 1px dotted black;
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+      border: 1px dotted black;
+      margin: 2px;
     }
 
-    .abscore {
-        text-align: center;
-        width: 30px;
+
+    #box {
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      padding: 2px;
+    }
+
+    #display {
+      justify-content: flex-end;
+    }
+
+
+    .value {
+      justify-content: flex-end;
+      text-align: center;
+      width: 30px;
+      align-self: center;
     }
 </style>
 
-{{ability.name}}:<input class="abscore" type="text" [(ngModel)]="score"> {{ability.modAsString()}}
-
+<span id="box">{{ability.name}}:</span><span id="display"><input class="value" type="text" [(ngModel)]="score"><input class="value" type="text" readonly value="{{ability.modAsString()}}"></span>

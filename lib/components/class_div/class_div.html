@@ -1,0 +1,81 @@
+<!-- For displaying one single Class choice -->
+<!-- Max size limitation? Otherwise fit to screen. -->
+<style>
+  .body {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 25em;
+    margin: 5px;
+    padding: 5px;
+    justify-content: center;
+  }
+
+  .box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    margin: 5px;
+    padding: 4px;
+    border: 1px solid black;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .border {
+    border: 1px dashed darkgray;
+    padding: 4px;
+  }
+
+  .desc {
+    font-size: 0.9em;
+  }
+</style>
+
+<div class="body">
+  <button type="button" (click)="isCollapsed = !isCollapsed">{{charClass.name}}</button>
+  <!--h2 style="display: flex; justify-content: center;">{{charClass.name}}</h2-->
+  <!--input type="text" readonly value="{{charClass.description}}"-->
+  <!--details>{{charClass.description}}</details-->
+  <!--button (click)="classSelect()">Select</button-->
+  <hr>
+  <div [(bsCollapse)]="isCollapsed">
+    <img>
+    <div class="desc box">{{charClass.description}}</div>
+    <hr>
+    <div class="box">
+      <div>Hit Die: {{charClass.hitDie}}</div>
+      <div class="border">Proficiencies:
+        <div class="box">Saving Throws:
+          <ul class="list" *ngFor="let throws of charClass.savingThrows">
+            <li>{{ throws }}</li>
+          </ul>
+        </div>
+        <div class="box">Armor Proficiencies:
+          <ul *ngFor="let armors of charClass.armors">
+            <li>{{ armors }} </li>
+          </ul>
+        </div>
+        <div class="box">Weapon Proficiencies:
+          <ul *ngFor="let wpns of charClass.weapons">
+            <li>{{ wpns }}</li>
+          </ul>
+        </div>
+        <div class="box">Tool Proficiencies:
+          <ul *ngFor="let tools of charClass.tools">
+            <li>{{ tools }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box">Class Skills:
+        <ul *ngFor="let skill of charClass.skills">
+          <li>{{ skill }}</li>
+        </ul>
+      </div>
+    <button style="margin: 2px;" (click)="select()">Select</button>
+    </div>
+  </div>
+</div>

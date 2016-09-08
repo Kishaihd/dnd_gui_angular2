@@ -1,11 +1,14 @@
 library model.race; // Why doesn't think work?
 
+import 'modify.dart';
 import 'trait.dart';
 
 class Race {
   String _name;
   String _type;
+  String _description;
   Map<String, int> _racialAbilities;
+  //List<String> _racialAbilitiesList;
   String _size;
   int _landSpeed;
   int _swimSpeed = 0;
@@ -13,7 +16,7 @@ class Race {
   List<String> _languages;
   bool _canChooseLanguage = false;
   String _subrace;
-  Map<String, int> _vision;
+  Map<String, int> _vision = {};
   List<Trait> _traits;
   List<String> _skillProficiencies;
   List<String> _weaponProficiencies;
@@ -30,16 +33,65 @@ class Race {
     return _flySpeed > 0 ? true : false;
   }
 
-  Trait ExtraLanguage = new Trait.fromParam("Extra Language", "You can speak, read, and write one extra language o f your choice.");
+  Trait ExtraLanguage = new Trait.fromParam("Extra Language", "You can speak, read, and write one extra language of your choice.");
 
   List<String> get skillProficiencies => (skillProficiencies.isEmpty ? "None" : _skillProficiencies);
   List<String> get weaponProficiencies => (skillProficiencies.isEmpty ? "None" : _weaponProficiencies);
   List<String> get armorProficiencies => (skillProficiencies.isEmpty ? "None" : _armorProficiencies);
   List<String> get toolProficiencies => (toolProficiencies.isEmpty ? "None" : _toolProficiencies);
 
-  String get name => _name;
+  //String get name => _name;
+  String get name {
+    if (_subrace != null && _subrace != "") {
+      return capitalizeAllWords(_subrace);
+    }
+    else {
+      return capitalize(_name);
+    }
+  }
+
   String get type => _type;
+  String get description => _description;
   Map<String, int> get racialAbilities => _racialAbilities;
+  List<String> get racialAbilitiesList {
+    List<String> abs = [];
+    String racialMod = "";
+
+    _racialAbilities.forEach((String ability, int value) {
+      racialMod = ability;
+      if (value > 0) {
+        racialMod += " +$value";
+      }
+      else {
+        racialMod += " -$value";
+      }
+
+      abs.add(racialMod);
+    });
+
+    return abs;
+  }
+
+  Map<String, int> get vision => _vision.isEmpty ? {"None" : 0} : _vision;
+
+  List<String> getVisionList() {
+    List<String> visions = [];
+    String sight = "";
+
+    if (_vision.isNotEmpty) {
+      _vision.forEach((String vis, int range) {
+        sight = vis;
+        if (range > 0) {
+          sight += ": " + "$range ft.";
+        }
+        visions.add(sight);
+      });
+    }
+    else {
+      visions.add("Blind as fuck");
+    }
+    return visions;
+  }
 
   // Is this getter even necessary?
   int getRacialAbility(String idx) {
@@ -54,16 +106,43 @@ class Race {
   String get subrace => (_subrace == null ? "None" : _subrace);
   List<Trait> get traits => (_traits.isEmpty ? "None" :  _traits);
 
+  void set vision(Map<String, int> vMap) {
+    // Necessary?
+    bool valuesAreGood = false;
+
+    if (vMap.isNotEmpty) {
+      vMap.forEach((String vis, int range) {
+        if (vis.runtimeType == String && range.runtimeType == int) {
+          valuesAreGood = true;
+        }
+        if (valuesAreGood == true) {
+          _vision.addAll(vMap);
+        }
+      });
+    }
+  }
+
 }
 
 class Tiefling extends Race {
 
   Tiefling() {
     _name = "Tiefling";
+    _description = """To be greeted with stares and whispers, to suffer
+      violence and insult on the street, to see mistrust and
+      fear in every eye: this is the lot of the tiefling. And to
+      twist the knife, tieflings know that this is because a
+      pact struck generations ago infused the essence of
+      Asmodeus—overlord of the Nine Hells—into their
+      bloodline. Their appearance and their nature are not
+      their fault but the result of an ancient sin, for which
+      they and their children and their children’s children
+      will always be held accountable.""";
     _racialAbilities = {
       "Intelligence": 1,
       "Charisma": 2
     };
+
     _type = "Outsider";
     _size = "Medium";
     _landSpeed = 30;
@@ -93,7 +172,7 @@ class Human extends Race {
     _landSpeed = 30;
     _canChooseLanguage = true;
     _languages = ["Common"];
-    _vision = {"Common" : 0};
+    _vision = {"Normal" : 0};
 
     _traits = [ExtraLanguage];
   }
@@ -106,8 +185,11 @@ class Human extends Race {
 class Elf extends Race {
 
   Elf([String subrace = null]) : super(subrace) {
+    /// todo: elf is intentionally not capitalized here to test capitalization function.
+    ///   should the rest be not capitalized?
+    _name = "elf";
     _racialAbilities = {"Dexterity": 2};
-    _type = "Humanoid"; // Right?
+    _type = "Fey"; // Right?
     _size = "Medium";
     _landSpeed = 30;
 

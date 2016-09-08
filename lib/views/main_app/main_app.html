@@ -2,6 +2,79 @@
   :host {
     padding: 5px;
   }
+
+  #button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5em;
+      height: 5em;
+      padding: 4px;
+      margin: 4px;
+  }
 </style>
 
-<character-view></character-view>
+
+
+<bs-tabs #tabs>
+    <template bsTab [active]="true" select="characterView">
+      Character
+    </template>
+    <template bsTab select="abilitiesView">
+      Abilities
+    </template>
+    <template bsTab select="classView">
+      Classes
+    </template>
+    <template bsTab select="raceView">
+      Races
+    </template>
+    <template bsTab select="bgView">
+      Background
+    </template>
+    <template bsTab select="test">
+        Test it!
+    </template>
+</bs-tabs>
+
+<bs-tab-content class="flex layout vertical" [for]="tabs">
+  <template bs-tab-panel name="characterView">
+    <character-view class="flex" [character]="characterService.pc"></character-view>
+  </template>
+  <template bs-tab-panel name="abilitiesView">
+    <abilities-div class="flex" [abList]="characterService.pc.abilitiesList"></abilities-div>
+  </template>
+  <template bs-tab-panel name="classView">
+    <class-view class="flex" [cList]="classService.classList" [pc_in_class]="characterService.pc"></class-view>
+    <div *ngIf="characterService.pc.characterClass != null">
+      <div *ngFor="let sk of characterService.pc.characterClass.skills">
+        <skill-div [skill]="sk" [profBonus]="characterService.pc.proficiencyBonus"></skill-div>
+      </div>
+    </div>
+  </template>
+  <template bs-tab-panel name="raceView">
+    <race-view class="flex" [rList]="raceService.raceList" [pc_in_race]="characterService.pc"></race-view>
+  </template>
+  <template bs-tab-panel name="bgView">
+    <god-view class="flex" [character]="characterService.pc" [dList]="deityService.deityList"></god-view>
+  </template>
+  <template bs-tab-panel name="test">
+      <button id="button" (click)="printCharacter()">Test Character!</button>
+  </template>
+</bs-tab-content>
+
+
+<!--div>
+  <character-view [character]="characterService.pc"></character-view>
+
+  <class-view [cList]="classService.classList" [pc_in_class]="characterService.pc"></class-view>
+  <div *ngIf="characterService.pc.characterClass != null">
+    <div *ngFor="let sk of characterService.pc.characterClass.skills">
+      <skill-div [skill]="sk" [profBonus]="characterService.pc.proficiencyBonus"></skill-div>
+    </div>
+  </div>
+
+  <race-view [rList]="raceService.raceList" [pc_in_race]="characterService.pc"></race-view>
+
+</div-->
+

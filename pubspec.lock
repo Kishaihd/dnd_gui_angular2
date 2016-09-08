@@ -6,7 +6,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.27.4"
+    version: "0.27.6"
   angular2:
     description:
       name: angular2
@@ -36,7 +36,7 @@ packages:
       name: bootstrap_sass
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0-alpha.2"
+    version: "4.0.0-alpha.3+1"
   browser:
     description:
       name: browser
@@ -66,7 +66,7 @@ packages:
       name: code_transformers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.2+2"
+    version: "0.4.2+3"
   collection:
     description:
       name: collection
@@ -156,7 +156,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.0"
+    version: "0.13.1"
   isolate:
     description:
       name: isolate
@@ -168,7 +168,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.0"
+    version: "0.6.1"
   logging:
     description:
       name: logging
@@ -192,7 +192,7 @@ packages:
       name: ng_bootstrap
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.2"
+    version: "0.2.3"
   node_shims:
     description:
       name: node_shims
@@ -240,7 +240,7 @@ packages:
       name: protobuf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.2"
+    version: "0.5.3"
   reflectable:
     description:
       name: reflectable
@@ -258,7 +258,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.5+2"
+    version: "0.6.5+3"
   shelf_static:
     description:
       name: shelf_static
@@ -350,4 +350,4 @@ packages:
     source: hosted
     version: "2.1.10"
 sdks:
-  dart: ">=1.17.0-dev.6.2 <2.0.0"
+  dart: ">=1.19.0-dev.0.0 <2.0.0"

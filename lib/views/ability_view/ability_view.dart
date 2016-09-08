@@ -11,7 +11,7 @@ import '../../model/ability.dart';
 class AbilityView {
   final LoggerService _log;
 
-  Ability ab;
+  Ability ability;
   @Input() String name;
   @Input() int score;
 

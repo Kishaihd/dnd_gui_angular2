@@ -1,0 +1,16 @@
+<!-- For displaying one single Class choice -->
+<style>
+    :host {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 3px;
+        padding: 4px;
+    }
+
+    #rd {
+        max-width: 100%;
+        min-width: 45%;
+    }
+</style>
+
+<race-div id="rd" *ngFor="let aRace of rList" [race]="aRace" [character]="pc_in_race"></race-div>

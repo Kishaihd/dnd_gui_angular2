@@ -4,9 +4,11 @@ class Trait {
   String _name;
   String _description;
 
-  Trait.fromParam(String n, String d) {
-    _name = n;
-    _description = d;
+  Trait();
+
+  Trait.fromParam(this._name, this._description) {
+//    _name = n;
+//    _description = d;
   }
 
   String get name => _name;

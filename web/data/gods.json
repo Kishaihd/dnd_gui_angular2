@@ -1,0 +1,113 @@
+[
+  [
+    {"name":"Auril", "alignment":"Neutral Evil", "description":"Goddess of winter", "domains":"Nature, Tempest", "symbol":""}
+  ],
+  [
+  {"name":"Azuth", "alignment":"Lawful Neutral", "description":"God of wizards", "domains":"Knowledge", "symbol":""}
+  ],
+  [
+  {"name":"Bane", "alignment":"Lawful Evil", "description":"God of Tyranny", "domains":"War", "symbol":""}
+  ],
+  [
+  { "name":"Beshaba", "alignment":"Chaotic Evil", "description":"Goddess of misfortune", "domains":"Trickery", "symbol":""}
+  ],
+  [
+  { "name":"Bhaal", "alignment":"Neutral Evil", "description":"God of murder", "domains":"Death", "symbol":""}
+  ],
+  [
+  { "name":"Chauntea", "alignment":"Neutral Good", "description":"Goddess of agriculture", "domains":"Life", "symbol":""}
+  ],
+  [
+  { "name":"Cyric", "alignment":"Chaotic Evil", "description":"God of lies", "domains":"Trickery", "symbol":""}
+  ],
+  [
+  { "name":"Deneir", "alignment":"Neutral Good", "description":"God of writing", "domains":"Knowledge", "symbol":""}
+  ],
+  [
+  { "name":"Eldath", "alignment":"Neutral Good", "description":"Goddess of peace", "domains":"Life, Nature", "symbol":""}
+  ],
+  [
+  { "name":"Gond", "alignment":"Neutral", "description":"God of craft", "domains":"Knowledge", "symbol":""}
+  ],
+  [
+  { "name":"Helm", "alignment":"Lawful Neutral", "description":"God of protection", "domains":"Life, Light", "symbol":""}
+  ],
+  [
+  { "name":"Ilmater", "alignment":"Lawful Good", "description":"God of endurance", "domains":"Life", "symbol":""}
+  ],
+  [
+  { "name":"Kelemvor", "alignment":"Lawful Neutral", "description":"God of the dead", "domains":"Death", "symbol":""}
+  ],
+  [
+  { "name":"Lathander", "alignment":"Neutral Good", "description":"God of birth and renewal", "domains":"Life, Light", "symbol":""}
+  ],
+  [
+  { "name":"Leira", "alignment":"Chaotic Neutral", "description":"Goddess of illusion", "domains":"Trickery", "symbol":""}
+  ],
+  [
+  { "name":"Llira", "alignment":"Chaotic Good", "description":"Goddess of joy", "domains":"Life", "symbol":""}
+  ],
+  [
+  { "name":"Loviatar", "alignment":"Lawful Evil", "description":"Goddess of pain", "domains":"Death", "symbol":""}
+  ],
+  [
+  { "name":"Malar", "alignment":"Chaotic Evil", "description":"God of the hunt", "domains":"Nature", "symbol":""}
+  ],
+  [
+  { "name":"Mask", "alignment":"Chaotic Neutral", "description":"God of thieves", "domains":"Trickery", "symbol":""}
+  ],
+  [
+  { "name":"Mielikki", "alignment":"Neutral Good", "description":"Goddess of forests", "domains":"Nature", "symbol":""}
+  ],
+  [
+  { "name":"Milil", "alignment":"Neutral Good", "description":"God of poetry and song", "domains":"Light", "symbol":""}
+  ],
+  [
+  { "name":"Myrkul", "alignment":"Neutral Evil", "description":"God of death", "domains":"Death", "symbol":""}
+  ],
+  [
+  { "name":"Mystra", "alignment":"Neutral Good", "description":"Goddess of magic", "domains":"Knowledge", "symbol":""}
+  ],
+  [
+  { "name":"Oghma", "alignment":"Neutral", "description":"God of knowledge", "domains":"Knowledge", "symbol":""}
+  ],
+  [
+  { "name":"Savras", "alignment":"Lawful Neutral", "description":"God of divination and fate", "domains":"Knowledge", "symbol":""}
+  ],
+  [
+  { "name":"Selune", "alignment":"Chaotic Good", "description":"Goddess of the moon", "domains":"Knowledge, Life", "symbol":""}
+  ],
+  [
+  { "name":"Shar", "alignment":"Neutral Evil", "description":"Goddess of darkness and loss", "domains":"Death, Trickery", "symbol":""}
+  ],
+  [
+  { "name":"Silvanus", "alignment":"Neutral", "description":"God of wild nature", "domains":"Nature", "symbol":"a url"}
+  ],
+  [
+  { "name":"Sune", "alignment":"Chaotic Good", "description":"Goddess of love and beauty", "domains":"Life, Light", "symbol":""}
+  ],
+  [
+  { "name":"Talona", "alignment":"Chaotic Evil", "description":"Goddess of disease and poison", "domains":"Death", "symbol":""}
+  ],
+  [
+  { "name":"Talos", "alignment":"Chaotic Evil", "description":"God of storms", "domains":"Tempest", "symbol":""}
+  ],
+  [
+  { "name":"Tempus", "alignment":"Neutral", "description":"God of war", "domains":"Tempest", "symbol":""}
+  ],
+  [
+  { "name":"Torm", "alignment":"Lawful Good", "description":"God of courage and self-sacrifice", "domains":"War", "symbol":""}
+  ],
+  [
+  { "name":"Tymora", "alignment":"Chaotic Good", "description":"Goddess of good fortune", "domains":"Trickery", "symbol":""}
+  ],
+  [
+  { "name":"Tyr", "alignment":"Lawful Good", "description":"God of justice", "domains":"War", "symbol":""}
+  ],
+  [
+  { "name":"Umberlee", "alignment":"Chaotic Evil", "description":"Goddess of the sea", "domains":"Tempest", "symbol":""}
+  ],
+  [
+  { "name":"Waukeen", "alignment":"Neutral", "description":"Goddess of trade", "domains":"Knowledge, Trickery", "symbol":""}
+  ]
+]

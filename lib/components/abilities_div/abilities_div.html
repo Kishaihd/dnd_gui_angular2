@@ -3,20 +3,22 @@
         display: flex;
         flex-flow: column nowrap;
         margin: 2px;
-        padding: 1px;
-        width: 10em;
+        padding: 2px;
+        width: 12em;
         border: solid black 1px;
     }
     .abilities-class {
         display: flex;
         align-content: space-between;
         flex-flow: column nowrap;
-        padding: 1px;
+        padding: 2px;
     }
 </style>
 
+
 <div class="ab-box">
-    <div class="abilities-class" *ngFor="let ability of abList">
-        <ability-div [ability]="ability"></ability-div>
+    <button style="margin: 4px;" (click)="rollStats()">Roll Stats</button>
+    <div class="abilities-class" *ngFor="let ab of abList">
+        <ability-div [ability]="ab"></ability-div>
     </div>
 </div>

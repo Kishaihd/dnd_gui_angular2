@@ -1,0 +1,11 @@
+<style>
+    :host {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+</style>
+
+<div *ngFor="let d of dList">
+    <god-div [pc_in_deity]="character" [deity]="d"></god-div>
+</div>

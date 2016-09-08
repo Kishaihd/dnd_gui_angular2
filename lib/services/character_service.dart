@@ -6,7 +6,7 @@ import '../model/entity.dart';
 class CharacterService {
   final LoggerService _log;
 
-  Entity newCharacter = new Entity();
+  Entity pc = new Entity();
 
   String test = "boner";
 

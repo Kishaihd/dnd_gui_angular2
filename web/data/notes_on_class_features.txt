@@ -1,0 +1,395 @@
+Eventually Incorporate the regular class stats into these JSONs,
+Also, have the maps be <String, Dynamic>, where Dynamic can be a new mod object
+or a boolean that allows you to increase an ability score or something.
+
+[
+  { "barbarian" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+
+  { "bard" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+
+  { "cleric" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+
+  { "druid" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+
+  { "fighter" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+
+  { "monk" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+  { "paladin" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+  { "ranger" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+  { "rogue" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+  { "sorcerer" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }, // End map of className, LevelList
+  { "warlock" :
+    [
+      [ // This will be for level one...
+        {"Otherworldly Patron" : "stuff", "Pact Magic" : "stuff"},
+        {"Eldritch Invocations" : ""}
+      ],
+      [ // List of Level two features.
+        {"" : ""},
+        {"" : ""}
+      ],
+      [ // Level three
+        {"" : ""},
+        {"" : ""}
+      ],
+      [ // Level four...
+        {"" : ""},
+        {"" : ""}
+      ],
+      [
+        {"" : ""},
+        {"" : ""}
+      ],
+      [
+        {"" : ""},
+        {"" : ""}
+      ],
+      [
+        {"" : ""},
+        {"" : ""}
+      ]
+    ] // End LevelList
+  }, // End map of className, LevelList
+  { "wizard" :
+  [
+    [ // List of Level one features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // List of Level two features.
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level three
+      {"" : ""},
+      {"" : ""}
+    ],
+    [ // Level four...
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ],
+    [
+      {"" : ""},
+      {"" : ""}
+    ]
+  ] // End LevelList
+  }
+]

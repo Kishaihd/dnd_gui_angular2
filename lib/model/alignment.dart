@@ -7,13 +7,27 @@ class Alignment {
   static const int CHAOTIC_LIMIT = -20;
   static const int EVIL_LIMIT = -20;
 
+  static const List<String> alignments = const [
+    "Lawful Good",
+    "Neutral Good",
+    "Chaotic Good",
+    "Lawful Neutral",
+    "Neutral",
+    "Chaotic Neutral",
+    "Lawful Evil",
+    "Neutral Evil",
+    "Chaotic Evil"
+  ];
+
   String _alignment;
 
   //  Both have 3  'ranges' , (-100, -21), (-20, 20), (21, 100)
   int _lawfulness; // Lawful, neutral, chaotic
-  int _morality; // Good, enutral, evil
+  int _morality; // Good, neutral, evil
 
-  Alignment();
+  Alignment() {
+    _alignment = "unaligned";
+  }
 
   Alignment.fromValue(int lawfulness, int morality) {
     _lawfulness = lawfulness;
@@ -128,7 +142,12 @@ class Alignment {
     calcAlignment();
   }
 
+  /// todo: get alignment working!
   String get score => _alignment;
+  void set score(String al) {
+    _alignment = al;
+    setByString(al);
+  }
 
-
+  static List<String> get choices => alignments;
 }

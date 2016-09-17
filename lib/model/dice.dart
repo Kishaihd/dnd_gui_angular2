@@ -13,6 +13,10 @@ class Die {
     if (sides != null) {
       _sides = sides;
     }
+    else {
+      // Default d6
+      _sides = 6;
+    }
   }
 
   int rollDie() => rand.nextInt(_sides) + 1;

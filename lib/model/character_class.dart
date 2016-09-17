@@ -20,6 +20,8 @@ class CharClass {
   Feature _feature;
   FeatureList _featureList;
 
+
+
   String _name;
   int _hitDie;
   int _level;
@@ -33,6 +35,9 @@ class CharClass {
   List<String> _toolProficiency;
   List<String> _savingThrowProficiency;
   String _description;
+
+  /// todo: starting wealth calculations! :D
+  int _startingWealth;
 
   // Should these be in the specific class?
   String _casterStat;

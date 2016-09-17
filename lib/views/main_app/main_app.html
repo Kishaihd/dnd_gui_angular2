@@ -17,8 +17,8 @@
 
 
 <bs-tabs #tabs>
-    <template bsTab [active]="true" select="characterView">
-      Character
+    <template bsTab [active]="true" select="basicsView">
+      Basics
     </template>
     <template bsTab select="abilitiesView">
       Abilities
@@ -38,8 +38,8 @@
 </bs-tabs>
 
 <bs-tab-content class="flex layout vertical" [for]="tabs">
-  <template bs-tab-panel name="characterView">
-    <character-view class="flex" [character]="characterService.pc"></character-view>
+  <template bs-tab-panel name="basicsView">
+    <basics-view class="flex" [character]="characterService.pc"></basics-view>
   </template>
   <template bs-tab-panel name="abilitiesView">
     <abilities-div class="flex" [abList]="characterService.pc.abilitiesList"></abilities-div>
@@ -59,7 +59,8 @@
     <god-view class="flex" [character]="characterService.pc" [dList]="deityService.deityList"></god-view>
   </template>
   <template bs-tab-panel name="test">
-      <button id="button" (click)="printCharacter()">Test Character!</button>
+      <character-view [character]="characterService.pc"></character-view>
+      <!--<button id="button" (click)="printCharacter()">Test Character!</button>-->
   </template>
 </bs-tab-content>
 

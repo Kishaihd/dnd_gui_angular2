@@ -8,6 +8,7 @@ import '../../services/class_service.dart';
 import '../../services/race_service.dart';
 import '../../services/deity_service.dart';
 
+import '../basics_view/basics_view.dart';
 import '../character_view/character_view.dart';
 import '../../components/abilities_div/abilities_div.dart';
 import '../class_view/class_view.dart';
@@ -17,7 +18,7 @@ import '../../views/god_view/god_view.dart';
 
 @Component(selector: 'main-app',
     templateUrl: 'main_app.html',
-    directives: const [NG_BOOTSTRAP_DIRECTIVES, NG_BOOTSTRAP_TABS_DIRECTIVES, CharacterView, AbilitiesDiv, ClassView, SkillsDiv, RaceView, GodView],
+    directives: const [NG_BOOTSTRAP_DIRECTIVES, NG_BOOTSTRAP_TABS_DIRECTIVES, BasicsView, CharacterView, AbilitiesDiv, ClassView, SkillsDiv, RaceView, GodView],
     providers: const [CharacterService, ClassService, RaceService, DeityService]
 )
 class MainApp {
@@ -29,6 +30,7 @@ class MainApp {
 
   MainApp(LoggerService this._log, CharacterService this.characterService, ClassService this.classService, RaceService this.raceService, DeityService this.deityService) {
     _log.info("$runtimeType()");
+    characterService.pc.deityList = deityService.deityList;
   }
 
   void printCharacter() {

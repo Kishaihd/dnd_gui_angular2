@@ -31,7 +31,7 @@ class Entity {
 
   // Patron attributes
   Deity _deity;
-  //String _deity;
+  List<Deity> _deityList = []; // List of deities.
   String _patron;
 
   // Game attributes
@@ -530,7 +530,8 @@ class Entity {
   Alignment get alignmentObject => _alignment;
   List<String> get alignmentChoices => Alignment.alignments;
   String get status => _status;
-  Deity get deity => _deity == null ? "None" : _deity;
+  String get deity => _deity == null ? "None" : _deity.name;
+  List<Deity> get deityList => _deityList ?? [];
   String get patron => _patron == null ? "None" : _patron;
   /// todo: Verify isComplete() will actually work.
   int numIncomplete() {
@@ -619,8 +620,7 @@ class Entity {
     });
     _doneEssentials.forEach((String reason, bool truth) {
       if (truth == false) {
-        print("Character is incomplete.");
-        print("${reason}: ${truth}\n");
+        print("Character is incomplete. $reason: $truth");
         return false;
       }
       else {
@@ -750,7 +750,21 @@ class Entity {
     _status = status;
     _doneEssentials["hasStatus"] = true;
   }
-  void set deity(Deity d) {
+
+  void set deityList(List<Deity> dL) {
+    _deityList = dL ?? [];
+  }
+
+  void set deity(String deity) {
+    if (_deityList != null && _deityList.isNotEmpty) {
+      _deityList.firstWhere((Deity d) {
+        d.name == deity;
+        setDeity(d);
+      });
+    }
+  }
+
+  void setDeity(Deity d) {
     _deity = d;
     if (_patron == null || _patron == "") {
       _patron = d.name;

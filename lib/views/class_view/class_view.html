@@ -1,21 +1,17 @@
 <!-- For displaying one single Class choice -->
 <style>
   :host {
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    margin: 3px;
-    padding: 4px;
-    flex-flow: row wrap;
+      display: flex;
+      flex-flow: row wrap;
+      margin: 3px;
+      padding: 4px;
+  }
+
+  #cd {
+      max-width: 100%;
+      min-width: 100px;
+      max-height: 100%;
   }
 </style>
 
-<!--select #classOptions>
-  <option *ngFor="let aClass of cList"><class-div [charClass]="aClass"></class-div></option>
-</select-->
-
-
-<div *ngFor="let aClass of cList">
-  <class-div [charClass]="aClass" [character]="pc_in_class"></class-div>
-  <!--button (click)="select()">Select</button-->
-</div>
+<class-div id="cd" *ngFor="let aClass of cList" [charClass]="aClass" [character]="pc_in_class"></class-div>

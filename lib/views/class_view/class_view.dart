@@ -17,6 +17,7 @@ import '../../components/class_div/class_div.dart';
 class ClassView {
   final LoggerService _log;
   //final ClassService classService;
+  List<int> openIndex = [];
 
   @Input() List<CharClass> cList = [];
   @Input() Entity pc_in_class;

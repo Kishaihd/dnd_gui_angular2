@@ -5,15 +5,14 @@
         align-items: center;
         flex-flow: column nowrap;
         padding: 4px;
-        margin: 4px;
+        margin: 2px;
         border: 1px solid black;
     }
 
     #name-box {
         display: flex;
         flex-flow: row wrap;
-        min-width: 229px;
-        max-width: 900px;
+        width: 65%;
         padding: 2px;
         margin: 2px;
     }
@@ -23,11 +22,11 @@
         flex-flow: row wrap;
         justify-content: center;
         min-width: 266px;
-        max-width: 900px;
+        max-width: 650px;
         min-height: 266px;
-        max-height: 900px;
-        padding: 4px;
-        margin: 4px;
+        max-height: 650px;
+        padding: 2px;
+        margin: 2px;
     }
 
     .active {
@@ -55,12 +54,13 @@
 
 </style>
 
-<h1>{{character.name}}</h1>
-<span><h3>Level {{character.level}} {{character.raceName}} {{character.className}}</h3></span>
-<h5>{{character.alignment}}</h5>
-<h5>Follower of {{character.deity}}</h5>
-<abilities-div [abList]="character.abilities"></abilities-div>
+<h1> Ch </h1>
+<!--button (click)="generate()">Generate</button--> <!-- This will pregenerate a character! -->
+<input id="name-box" #nameInput type="text" placeholder="Name..." [(ngModel)]="name" autofocus="true">
 
-
-
-
+<vu-selector class="box" style="border: 2px solid black;" [(selectedIndex)]="alignmentSelected">
+    <button *ngFor="let alignment of character.alignmentChoices; let i = index" vuSelectable
+            class="alignment-box vertical center center-justified">
+        {{ alignment }}
+    </button>
+</vu-selector>

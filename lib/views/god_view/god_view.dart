@@ -23,6 +23,7 @@ class GodView {
   GodView(LoggerService this._log) {
     _log.info("$runtimeType()");
 
+//    character.deityList = dList;
 //    if (character.alignment != "unaligned") {
 //      if (dList.isNotEmpty) {
 //        dList.forEach((Deity d) {

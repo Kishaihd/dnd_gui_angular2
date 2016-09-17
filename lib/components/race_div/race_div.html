@@ -1,0 +1,73 @@
+<!-- For displaying one single Race choice -->
+<!-- Max size limitation? Otherwise fit to screen. -->
+<style>
+    :host {
+        display: flex;
+        flex-flow: column wrap;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .box {
+        display: flex;
+        margin: 5px;
+        padding: 4px;
+        border: 1px solid black;
+    }
+
+    .list {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+
+    .border {
+        display: flex;
+        border: 1px dashed darkgray;
+        padding: 4px;
+    }
+
+    .desc {
+        display: flex;
+        font-size: 0.9em;
+    }
+</style>
+
+<button type="button"  class="btn btn-primary"
+        (click)="isCollapsed = !isCollapsed">{{race.name}}
+</button>
+    <div [(bsCollapse)]="isCollapsed">
+        <div class="card card-block card-header">
+            <div class="well well-lg">
+            <img>
+            <hr>
+            <div class="desc box">{{race.description}}</div>
+            <hr>
+            <!--<div>-->
+                <div class="box">Type: {{race.type}}</div>
+                <div class="box">Size: {{race.size}}</div>
+                <div class="box" style="display: flex; flex-flow: column nowrap;">Racial Abilities:
+                    <ul class="list" *ngFor="let ability of race.racialAbilitiesList">
+                        <li>{{ ability }}</li>
+                    </ul>
+                </div>
+                <div class="box">Languages:
+                    <ul class="list" *ngFor="let language of race.languages">
+                        <li>{{ language }}</li>
+                    </ul>
+                </div>
+                <div class="box">Vision:
+                    <ul *ngFor="let sight of race.getVisionList()">
+                        <li>{{ sight }}</li>
+                    </ul>
+                </div>
+                <div class="box">Traits:
+                    <ul *ngFor="let trait of race.traits">
+                        <li>{{ trait.name }}: {{ trait.description }}</li>
+                    </ul>
+                </div>
+            <!--</div>-->
+            <button style="margin: 2px;" (click)="select()">Select</button>
+        </div>
+        </div>
+        </div>

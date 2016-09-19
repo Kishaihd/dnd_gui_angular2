@@ -10,7 +10,7 @@ import '../../components/vu_selector/vu_selector.dart';
 
 @Component(selector: 'character-view',
     templateUrl: 'character_view.html',
-    directives: const [VuSelector, VuSelectable],//AbilitiesDiv],
+    directives: const [AbilitiesDiv],
     providers: const [] //CharacterService
 )
 class CharacterView {

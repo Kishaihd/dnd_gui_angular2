@@ -42,7 +42,10 @@
     <basics-view class="flex" [character]="characterService.pc"></basics-view>
   </template>
   <template bs-tab-panel name="abilitiesView">
+      <div class="flex">
+    <button style="margin: 4px;" (click)="rollStats()">Roll Raw Abilities</button>
     <abilities-div class="flex" [abList]="characterService.pc.abilitiesList"></abilities-div>
+      </div>
   </template>
   <template bs-tab-panel name="classView">
     <class-view class="flex" [cList]="classService.classList" [pc_in_class]="characterService.pc"></class-view>

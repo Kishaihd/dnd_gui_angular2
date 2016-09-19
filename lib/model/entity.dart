@@ -687,6 +687,27 @@ class Entity {
     _doneEssentials["hasHitDie"] = true;
   }
   void set race(Race race) {
+    if (_charRace != null) { // Race had previously been applied to character.
+      if (race == _charRace) { // Just multi-clicking the same race. Being dumb.
+        /// todo: Add a growl saying this race has already been chosen!:D
+        return;
+      }
+      else { //Had race, changed mind. Remove old values/mods.
+        _movement.removeLandMod("Racial");
+        _movement.removeSwimMod("Racial");
+        if (_charRace.canFly()) {
+          _movement.removeFlyMod("Racial");
+        }
+
+        abilitiesList.forEach((Ability charAbility) {
+          _charRace.racialAbilities.forEach((String oldRacialAbility, int oldValue) {
+            if (oldRacialAbility.toLowerCase() == charAbility.name.toLowerCase()) {
+              charAbility.decreaseAbility(oldValue);
+            }
+          });
+        });
+      }
+    }
     _charRace = race;
     _movement.addLandMod("Racial", race.racialLandSpeed);
     _movement.addSwimMod("Racial", race.racialSwimSpeed);
@@ -696,15 +717,25 @@ class Entity {
     _size = race.size;
     _type = race.type;
 
+    abilitiesList.forEach((Ability charAbility) {
+      race.racialAbilities.forEach((String racialAbility, int value) {
+        if (racialAbility.toLowerCase() == charAbility.name.toLowerCase()) {
+          charAbility.increaseAbility(value);
+        }
+      });
+    });
+
     _doneEssentials["hasRace"] = true;
     _doneEssentials["hasMovement"] = true;
     _doneEssentials["hasType"] = true;
     _doneEssentials["hasSize"] = true;
   }
+
+
   void set alignment(String alignment) {
-    _alignment.score = alignment;
+  _alignment.score = alignment;
 //    _alignment.setByString(alignment);
-    _doneEssentials["hasAlignment"] = true;
+  _doneEssentials["hasAlignment"] = true;
   }
   void setAbilitiesByList(List<Ability> incomingList) {
     if (incomingList[0].name == "Strength") {

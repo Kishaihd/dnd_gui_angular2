@@ -23,15 +23,15 @@ class AbilitiesDiv {
   }
 
   /// todo: Get stats-randomizer working!
-  void rollStats() {
-    _log.info("$runtimeType()::rollStats()");
-    abList.forEach((Ability ab) {
-      int stat = 0;
-      for (int rolls = 0; rolls < 3; rolls++) {
-        stat += new Random().nextInt(6) + 1;
-      }
-      ab.setAbilityScore(stat);
-    });
-  }
+//  void rollStats() {
+//    _log.info("$runtimeType()::rollStats()");
+//    abList.forEach((Ability ab) {
+//      int stat = 0;
+//      for (int rolls = 0; rolls < 3; rolls++) {
+//        stat += new Random().nextInt(6) + 1;
+//      }
+//      ab.setAbilityScore(stat);
+//    });
+//  }
 
 }

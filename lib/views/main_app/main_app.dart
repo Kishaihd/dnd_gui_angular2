@@ -2,6 +2,8 @@ import 'package:angular2/angular2.dart';
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 import 'package:ng_bootstrap/components/tabs/tabs.dart';
 
+import 'dart:math' show Random;
+
 import '../../services/logger_service.dart';
 import '../../services/character_service.dart';
 import '../../services/class_service.dart';
@@ -11,6 +13,7 @@ import '../../services/deity_service.dart';
 import '../basics_view/basics_view.dart';
 import '../character_view/character_view.dart';
 import '../../components/abilities_div/abilities_div.dart';
+import '../../model/ability.dart';
 import '../class_view/class_view.dart';
 import '../../components/skills_div/skills_div.dart';
 import '../../views/race_view/race_view.dart';
@@ -44,6 +47,17 @@ class MainApp {
     _log.info("${characterService.pc.isCompleted()}");
     _log.info("${characterService.pc.numIncomplete()}");
 
+  }
+
+  void rollStats() {
+    _log.info("$runtimeType()::rollStats()");
+    characterService.pc.abilitiesList.forEach((Ability ab) {
+      int stat = 0;
+      for (int rolls = 0; rolls < 3; rolls++) {
+        stat += new Random().nextInt(6) + 1;
+      }
+      ab.setAbilityScore(stat);
+    });
   }
 
 }

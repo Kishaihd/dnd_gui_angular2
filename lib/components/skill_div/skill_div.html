@@ -1,3 +1,40 @@
 <style>
+    :host {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        border: 1px dotted black;
+        margin: 2px;
+    }
 
+    .classSkill {
+        border: 1px solid blue;
+    }
+
+
+    .box {
+        display: inline-flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        padding: 2px;
+    }
+
+    .display {
+        justify-content: flex-end;
+    }
+
+
+    .value {
+        justify-content: flex-end;
+        text-align: center;
+        width: 30px;
+        padding: 2px;
+        margin: 4px;
+        align-self: center;
+    }
 </style>
+
+<span><span *ngIf="skill.isAClassSkill" class="box classSkill">{{skill.name}}:</span><span class="display"><input class="value" type="text" readonly value="{{skill.score}}"></span></span>
+<span><span *ngIf="!skill.isAClassSkill" class="box classSkill">{{skill.name}}:</span><span class="display"><input class="value" type="text" readonly value="{{skill.score}}"></span></span>

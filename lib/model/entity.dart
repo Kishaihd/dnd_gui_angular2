@@ -124,7 +124,7 @@ class Entity {
   List<Skill> chaSkills = [];
 
   // Master Skill list
-  List<List> fullSkillList;
+  List<List<Skill>> fullSkillList;
 
   // Does not include Constitution.
   List<int> abilitiesForSkills = [];
@@ -163,6 +163,7 @@ class Entity {
     wisSkills = [AnimalHandling, Insight, Medicine, Perception, Survival];
     chaSkills = [Deception, Intimidation, Performance, Persuasion];
 
+    ///todo: verify this is an okay way to do this.
     fullSkillList = [strSkills, dexSkills, intSkills, wisSkills, chaSkills];
 
     _armorClass = BASE_AC;
@@ -521,17 +522,38 @@ class Entity {
   int get swimMovement => _movement.swimSpeed;
   int get flyMovement => _movement.flySpeed;
   String get name => _name;
-  String get size => _charRace.size;
-  String get raceName => _charRace.name;
-  String get className => _charClass.name;
+//  String get size => _charRace.size ?? "";
+  String get size => (_charRace != null) ? _charRace.size : "none";
+//  String get raceName => _charRace.name ?? "";
+  String get raceName => (_charRace != null) ? _charRace.name : "none";
+//  String get className => _charClass.name ?? "";
+  String get className => (_charClass != null) ? _charClass.name : "none";
+//  List<String> get skills => _charClass?.skills;
+  List<String> get skills => _charClass != null ? _charClass?.skills : [];
+  ///todo: verify that this isn't as shitty as I'm feeling like it is.
+  List<Skill> get allSkills {
+    List<Skill> skillsList = [];
+    fullSkillList.forEach((List<Skill> skList) {
+      skList.forEach((Skill skill) {
+          skillsList.add(skill);
+      });
+    });
+    return skillsList;
+  }
+//  List<Skill> get skills {
+//
+//  }
+
+//  List<String> get skills => _charClass == null ? [] : _charClass.skills; // In case the above does not work.
   //List<String> get classList => CharClass.classList;
-  String get creatureType => _type == null ? "humanoid" : _type; // eg. Humanoid, Abberation, Construct etc.
+  String get creatureType => _type ?? "humanoid";
+//  String get creatureType => _type == null ? "humanoid" : _type; // eg. Humanoid, Abberation, Construct etc.
   String get alignment => _alignment.score;
   Alignment get alignmentObject => _alignment;
   List<String> get alignmentChoices => Alignment.alignments;
   String get status => _status;
   String get deity => _deity == null ? "None" : _deity.name;
-  List<Deity> get deityList => _deityList ?? [];
+  List<Deity> get deityList => _deityList == null ? [] : _deityList;
   String get patron => _patron == null ? "None" : _patron;
   /// todo: Verify isComplete() will actually work.
   int numIncomplete() {
@@ -610,6 +632,8 @@ class Entity {
   }
 
   bool isCompleted() {
+    bool doneCheck = false;
+
     abilitiesList.forEach((Ability ab) {
       if (ab != null && ab.score > 0) {
         _doneEssentials["hasAbilities"] = true;
@@ -624,9 +648,10 @@ class Entity {
         return false;
       }
       else {
-        return true;
+        doneCheck = true;
       }
     });
+    return doneCheck;
   }
 //  // "Generic" getter that returns any single skill and value.
 //  int getSkill(String skillName) {
@@ -679,12 +704,36 @@ class Entity {
     _doneEssentials["hasName"] = true;
   }
   void set characterClass(CharClass charClass) {
-    _charClass = charClass;
-    _proficiencyBonus = charClass.proficiencyBonus;
-    _hitDie = charClass.hitDie;
-    _doneEssentials["hasClass"] = true;
-    _doneEssentials["hasProficiencyBonus"] = true;
-    _doneEssentials["hasHitDie"] = true;
+    if (_charClass != null) { // a charClass had previously been applied to character.
+      if (charClass == _charClass) {
+        /// todo: add growl. This has already been applied!
+        return;
+      }
+      else { // Changed mind. Remove old values/ mods.
+        fullSkillList.forEach((List<Skill> skList) {
+          skList.forEach((Skill skill) {
+            if (skill.isAClassSkill) {
+              skill.isAClassSkill = false;
+            }
+          });
+        });
+      }
+    }
+      _charClass = charClass;
+      _proficiencyBonus = charClass.proficiencyBonus;
+      _hitDie = charClass.hitDie;
+      charClass.skills.forEach((String classSkill) {
+        fullSkillList.forEach((List<Skill> skList) {
+          skList.forEach((Skill skill) {
+            if (skill.name.toLowerCase() == classSkill.toLowerCase()) {
+              skill.isAClassSkill = true;
+            }
+          });
+        });
+      });
+      _doneEssentials["hasClass"] = true;
+      _doneEssentials["hasProficiencyBonus"] = true;
+      _doneEssentials["hasHitDie"] = true;
   }
   void set race(Race race) {
     if (_charRace != null) { // Race had previously been applied to character.

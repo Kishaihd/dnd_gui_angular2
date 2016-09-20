@@ -2,6 +2,25 @@
 
 </style>
 
-<div *ngFor="let sk of skillList">
-  <skill-div [skill]="sk"></skill-div>
+<!--<div *ngFor="let sk of skillList">-->
+  <!--<skill-div [skill]="sk"></skill-div>-->
+<!--</div>-->
+<!--Only display if character has a class-->
+<span *ngIf="character.className == 'none'">Character has no class yet!</span>
+<div *ngIf="character.className != 'none'">
+<pre class="card card-block card-header" *ngFor="let sk of character.allSkills">
+    {{sk.name}}: {{checkModel['sk.name']}}
+  <!--<div *ngFor="let sk of character.allSkills">-->
+  <!--</div>-->
+  <!--Middle: {{checkModel['middle']}},-->
+  <!--Right: {{checkModel['right']}}-->
+</pre>
+<!--<bs-button-group>-->
+  <!--<bs-toggle-button class="btn btn-primary" *ngFor="let sk of character.allSkills" (click)="select($event)" >{{sk.name}}</bs-toggle-button>-->
+  <!--<bs-toggle-button class="btn btn-primary" *ngFor="let sk of character.allSkills" (click)="checkModel['sk.name'] == !checkModel['sk.name']" >{{sk.name}}</bs-toggle-button>-->
+  <bs-toggle-button class="btn btn-primary" data-toggle="buttons" *ngFor="let sk of character.allSkills" [(ngModel)]="checkModel['sk.name']" >{{sk.name}}</bs-toggle-button>
+  <!--<bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['middle']">Middle</bs-toggle-button>-->
+  <!--<bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['right']" >Right</bs-toggle-button>-->
+<!--</bs-button-group>-->
+
 </div>

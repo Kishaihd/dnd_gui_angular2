@@ -105,9 +105,9 @@ class Skill /*implements Comparable*/ {
 //    _value = score;
 //  }
 
-//  void setIsClassSkill(bool isClassSkill) {
-//    classSkill = isClassSkill;
-//  }
+  void set isAClassSkill(bool isClassSkill) {
+    _isAClassSkill = isClassSkill;
+  }
 
 //  void setAbility(Ability ability) {
 //    _abilityMod = ability.mod;

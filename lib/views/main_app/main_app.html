@@ -32,6 +32,9 @@
     <template bsTab select="bgView">
       Background
     </template>
+    <template bsTab select="skillsView">
+        Skills
+    </template>
     <template bsTab select="test">
         Test it!
     </template>
@@ -61,6 +64,9 @@
   <template bs-tab-panel name="bgView">
     <god-view class="flex" [character]="characterService.pc" [dList]="deityService.deityList"></god-view>
   </template>
+    <template bs-tab-panel name="skillsView">
+        <skills-view [character]="characterService.pc"></skills-view>
+    </template>
   <template bs-tab-panel name="test">
       <character-view [character]="characterService.pc"></character-view>
       <!--<button id="button" (click)="printCharacter()">Test Character!</button>-->

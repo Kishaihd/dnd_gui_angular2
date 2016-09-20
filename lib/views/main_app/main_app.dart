@@ -16,12 +16,13 @@ import '../../components/abilities_div/abilities_div.dart';
 import '../../model/ability.dart';
 import '../class_view/class_view.dart';
 import '../../components/skills_div/skills_div.dart';
+import '../../views/skills_view/skills_view.dart';
 import '../../views/race_view/race_view.dart';
 import '../../views/god_view/god_view.dart';
 
 @Component(selector: 'main-app',
     templateUrl: 'main_app.html',
-    directives: const [NG_BOOTSTRAP_DIRECTIVES, NG_BOOTSTRAP_TABS_DIRECTIVES, BasicsView, CharacterView, AbilitiesDiv, ClassView, SkillsDiv, RaceView, GodView],
+    directives: const [NG_BOOTSTRAP_DIRECTIVES, NG_BOOTSTRAP_TABS_DIRECTIVES, BasicsView, CharacterView, AbilitiesDiv, ClassView, SkillsDiv, RaceView, GodView, SkillsView],
     providers: const [CharacterService, ClassService, RaceService, DeityService]
 )
 class MainApp {

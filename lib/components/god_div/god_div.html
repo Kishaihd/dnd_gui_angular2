@@ -20,14 +20,14 @@
 </style>
 
 <div>
-    <button type="button" id="divbox" (onclick)="pc_in_deity.deity = deity">
+    <button type="button" id="divbox" (click)="pc_in_deity.setDeity(deity)">
         <h1>{{deity.name}}</h1>
         <img><!-- -->
         <bs-modal #myModal [header]="deity.name"
                   positiveLabel="close"
                   [actions]="['POSITIVE']">
             <div>Alignment: {{ deity.alignment }}</div>
-            <div>Domains: {{ deity. domains }}</div>
+            <div>Domains: {{ deity.domains }}</div>
         </bs-modal>
         <button class="btn btn-primary" (click)="myModal.show()">Details</button>
         <hr>

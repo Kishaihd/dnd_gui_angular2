@@ -2,12 +2,10 @@ library model.alignment;
 
 
 class Alignment {
-  // If the limit is the same, why have different names?
-  static const int LIMIT = 20;
-//  static const int LAWFUL_LIMIT = 20;
-//  static const int GOOD_LIMIT = 20;
-//  static const int CHAOTIC_LIMIT = -20;
-//  static const int EVIL_LIMIT = -20;
+  static const int LAWFUL_LIMIT = 20;
+  static const int GOOD_LIMIT = 20;
+  static const int CHAOTIC_LIMIT = -20;
+  static const int EVIL_LIMIT = -20;
 
   static const List<String> alignments = const [
     "Lawful Good",
@@ -39,76 +37,6 @@ class Alignment {
 
   Alignment.fromString(String al) {
     setByString(al);
-  }
-
-/*------ This seemed to load up a function too much, but maybe it simplifies things on the usage end. ------*/
-//  // This will affect a character's lawful and morality alignments. Setting the lawMoralFlag will determine which axis is affected. lawfulness = 0, morality = 1.
-//  // Acts can be positive (Lawful/Good) or negative (Chaotic/Evil)
-//  void axisChange([int magnitude = 1], int lawMoralFlag) {
-//    if (lawMoralFlag == 0) { // Shift in lawfulness.
-//      _lawChaosAct(magnitude);
-//    }
-//    else { // Shift in morality.
-//      _goodEvilAct(magnitude);
-//    }
-//  }
-
-  // This will affect a character's lawful alignment. Acts can be lawful (positive), or chaotic (negative).
-  void lawChaosAct([int magnitude = 1]) {
-    if (magnitude > 0) { // It's a lawful act.
-      if (_lawfulness < _MAX_LAWFULNESS) { // Ensure they aren't already at max lawfulness.
-        _modLawfulness(magnitude);
-      }
-    }
-    else { // It's a chaotic act. 
-      if (_lawfulness > _MIN_LAWFULNESS) { // Ensure not already max chaotic.
-        _modLawfulness(magnitude);
-      }
-    }
-  }
-
-  // This will affect a character's morality alignment. Acts can be good (positive), or evil (negative). 
-  void goodEvilAct([int magnitude = 1]) {
-    if (magnitude > 0) { // It's a good act.
-      if (_morality < _MAX_MORALITY) { // Ensure they aren't already a saint.
-        _modMorality(magnitude);
-      }
-    }
-    else { // It's a chaotic act.
-      if (_morality > _MIN_MORALITY) { // Ensure they aren't already a devil.
-        _modMorality(magnitude);
-      }
-    }
-  }
-
-  // This will affect a character's morality alignment if they have remained neutral in a test of morality.
-  void neutralMoralityAct([int magnitude = 1]) {
-    if (_morality > 0) { // If they're more good than true neutral...
-      if (magnitude > 0) { 
-        magnitude = 0 - magnitude; // Make it negative, since it's bringing you closer to neutral.
-      }
-    }
-    else if (_morality < 0) { // If they're more evil than true neutral...
-      if (magnitude < 0 ) {
-        magnitude = 0 - magnitude; // Make it positive, since it's bringing you closer to neutral.
-      }
-    }
-    _modMorality(magnitude);
-  }
-
-  // This will affect a character's lawful alignment if they have remained neutral in a test of lawfulness.
-  void neutralLawAct([int magnitude = 1]) { 
-    if (_lawfulness > 0) { // If they're already more lawful than neutral...
-      if (magnitude > 0) {
-        magnitude = 0 - magnitude; // Make it negative.
-      }
-    }
-    else if (_lawfulness < 0) { // If they're already more chaotic than neutral...
-      if (magnitude < 0) {
-        magnitude = 0 - magnitude; // Make it positive.
-      }
-    }
-    _modLawfulness(magnitude);
   }
 
   String calcAlignment() {

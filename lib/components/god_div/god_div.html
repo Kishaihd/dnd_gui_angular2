@@ -20,7 +20,7 @@
 </style>
 
 <div>
-    <button type="button" id="divbox" (click)="pc_in_deity.setDeity(deity)">
+    <bs-toggle-button class="btn btn-primary" id="divbox">  <!--(click)="pc_in_deity.setDeity(deity)"-->
         <h1>{{deity.name}}</h1>
         <img><!-- -->
         <bs-modal #myModal [header]="deity.name"
@@ -33,5 +33,5 @@
         <hr>
         {{ deity.description }}
         <pre><!--img maybe have a deity-specific small image? eg a leaf for silvanus--></pre>
-    </button>
+    </bs-toggle-button>
 </div>

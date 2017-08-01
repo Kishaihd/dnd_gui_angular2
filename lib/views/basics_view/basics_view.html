@@ -1,20 +1,26 @@
 <style>
     :host {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-flow: column nowrap;
         padding: 4px;
         margin: 2px;
         border: 1px solid black;
     }
 
+    .divbod {
+        display: flex;
+        background: gray;
+        justify-content: center;
+        flex-flow: row wrap;
+    }
+
     #name-box {
         display: flex;
-        flex-flow: row wrap;
-        width: 65%;
         padding: 2px;
         margin: 2px;
+        background: red;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
     }
 
     .box {
@@ -54,13 +60,21 @@
 
 </style>
 
-<h1> Ch </h1>
-<!--button (click)="generate()">Generate</button--> <!-- This will pregenerate a character! -->
-<input id="name-box" #nameInput type="text" placeholder="Name..." [(ngModel)]="name" autofocus="true">
 
-<vu-selector class="box" style="border: 2px solid black;" [(selectedIndex)]="alignmentSelected">
-    <button *ngFor="let alignment of character.alignmentChoices; let i = index" vuSelectable
-            class="alignment-box vertical center center-justified">
-        {{ alignment }}
-    </button>
-</vu-selector>
+<h1> Character Creater </h1>
+<div>
+<!--button (click)="generate()">Generate</button--> <!-- This will pregenerate a character! -->
+    <input id="name-box" #nameInput type="text" placeholder="Name..." [(ngModel)]="name" autofocus="true">
+</div>
+    <!--<vu-selector class="box" style="border: 2px solid black;" [(selectedIndex)]="alignmentSelected">-->
+    <!--<button *ngFor="let alignment of character.alignmentChoices; let i = index" vuSelectable-->
+            <!--class="alignment-box vertical center center-justified">-->
+        <!--{{ alignment }}-->
+    <!--</button>-->
+    <!--</vu-selector>-->
+<div class="divbod">
+    <div *ngFor="let alignment of character.alignmentChoices; let i = index">
+    <!--<bs-toggle-button class="btn btn-primary" >{{ alignment }}</bs-toggle-button>-->
+    <div class="box" style="border: 2px solid black;">{{ alignment }}</div>
+    </div>
+</div>

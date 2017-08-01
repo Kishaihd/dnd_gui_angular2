@@ -9,7 +9,7 @@ import '../../model/entity.dart';
 
 @Component(selector: 'race-div',
   templateUrl: 'race_div.html',
-  directives: const [Collapse]
+  directives: const [BsCollapseDirective]
 )
 class RaceDiv {
   final LoggerService _log;

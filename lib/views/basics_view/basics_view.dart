@@ -3,6 +3,9 @@ import 'package:angular2/angular2.dart';
 import '../../services/logger_service.dart';
 import '../../services/character_service.dart';
 
+import 'package:ng_bootstrap/components/button/toggle.dart';
+import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
+import 'package:ng_bootstrap/components/tabs/tabs.dart';
 import '../../components/abilities_div/abilities_div.dart';
 import '../../components/skills_div/skills_div.dart';
 import '../../model/entity.dart';
@@ -10,7 +13,7 @@ import '../../components/vu_selector/vu_selector.dart';
 
 @Component(selector: 'basics-view',
     templateUrl: 'basics_view.html',
-    directives: const [VuSelector, VuSelectable],
+    directives: const [VuSelector, VuSelectable, BsToggleButtonDirective, BS_TABSX_DIRECTIVES],
     providers: const []
 )
 class BasicsView {

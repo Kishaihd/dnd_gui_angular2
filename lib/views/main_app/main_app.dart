@@ -1,6 +1,7 @@
 import 'package:angular2/angular2.dart';
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 import 'package:ng_bootstrap/components/tabs/tabs.dart';
+import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
 
 import 'dart:math' show Random;
 
@@ -22,7 +23,7 @@ import '../../views/god_view/god_view.dart';
 
 @Component(selector: 'main-app',
     templateUrl: 'main_app.html',
-    directives: const [NG_BOOTSTRAP_DIRECTIVES, NG_BOOTSTRAP_TABS_DIRECTIVES, BasicsView, CharacterView, AbilitiesDiv, ClassView, SkillsDiv, RaceView, GodView, SkillsView],
+    directives: const [BS_DIRECTIVES, NG_BOOTSTRAP_TABS_DIRECTIVES, BS_TABSX_DIRECTIVES, BasicsView, CharacterView, AbilitiesDiv, ClassView, SkillsDiv, RaceView, GodView, SkillsView],
     providers: const [CharacterService, ClassService, RaceService, DeityService]
 )
 class MainApp {

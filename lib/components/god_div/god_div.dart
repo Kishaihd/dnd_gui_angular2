@@ -1,6 +1,6 @@
 import 'package:angular2/angular2.dart';
 import 'package:ng_bootstrap/components/modal/modal.dart';
-
+import 'package:ng_bootstrap/components/button/toggle.dart';
 import '../../services/logger_service.dart';
 
 import '../../model/deity.dart';
@@ -8,7 +8,7 @@ import '../../model/entity.dart';
 
 @Component(selector: 'god-div',
     templateUrl: 'god_div.html',
-    directives: const [Modal],
+    directives: const [BsModalComponent, BsToggleButtonDirective],
     providers: const []
 )
 class GodDiv {

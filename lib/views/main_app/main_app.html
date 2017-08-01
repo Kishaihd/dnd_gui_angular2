@@ -1,9 +1,12 @@
 <style>
   :host {
-    padding: 5px;
+      display: flex;
+      background: lightgray;
+      padding: 5px;
   }
 
   #button {
+      background: teal;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -12,16 +15,80 @@
       padding: 4px;
       margin: 4px;
   }
+
+  .testy {
+      /*background: green;*/
+      width: 100px;
+      padding: 2px;
+      border: 2px solid black;
+  }
+
+  #tabsdiv{
+      /*background: blue;*/
+  }
 </style>
 
+<!--<bs-tabsx class="flex" [justified]="true">-->
+    <!--<bs-tabsx header="Basics">-->
+        <!--<basics-view class="flex" [character]="characterService.pc"></basics-view>-->
+    <!--</bs-tabsx>-->
+    <!--<bs-tabsx header="Abilities">-->
+        <!--<button style="margin: 4px;" (click)="rollStats()">Roll Raw Abilities</button>-->
+        <!--<abilities-div class="flex" [abList]="characterService.pc.abilitiesList"></abilities-div>-->
+        <!--&lt;!&ndash;<abilities-view class="flex" [character]="characterService.pc"></abilities-view>&ndash;&gt;-->
+    <!--</bs-tabsx>-->
+    <!--<bs-tabsx header="Classes">-->
+        <!--<classes-view class="flex" [character]="characterService.pc"></classes-view>-->
+    <!--</bs-tabsx>-->
+    <!--<bs-tabsx header="Races">-->
 
+    <!--</bs-tabsx>-->
+    <!--<bs-tabsx header="Background">-->
+
+    <!--</bs-tabsx>-->
+    <!--<bs-tabsx header="Skills">-->
+
+    <!--</bs-tabsx>-->
+    <!--<bs-tabsx header="Summary">-->
+
+    <!--</bs-tabsx>-->
+<!--</bs-tabsx>-->
+
+<!--<template bs-tab-panel name="abilitiesView">-->
+<!--<div class="flex">-->
+<!--<button style="margin: 4px;" (click)="rollStats()">Roll Raw Abilities</button>-->
+<!--<abilities-div class="flex" [abList]="characterService.pc.abilitiesList"></abilities-div>-->
+<!--</div>-->
+<!--</template>-->
+<!--<template bs-tab-panel name="classView">-->
+<!--<class-view class="flex" [cList]="classService.classList" [pc_in_class]="characterService.pc"></class-view>-->
+<!--<div *ngIf="characterService.pc.characterClass != null">-->
+<!--<div *ngFor="let sk of characterService.pc.characterClass.skills">-->
+<!--<skill-div [skill]="sk" [profBonus]="characterService.pc.proficiencyBonus"></skill-div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</template>-->
+<!--<template bs-tab-panel name="raceView">-->
+<!--<race-view class="flex" [rList]="raceService.raceList" [pc_in_race]="characterService.pc"></race-view>-->
+<!--</template>-->
+<!--<template bs-tab-panel name="bgView">-->
+<!--<god-view class="flex" [character]="characterService.pc" [dList]="deityService.deityList"></god-view>-->
+<!--</template>-->
+<!--<template bs-tab-panel name="skillsView">-->
+<!--<skills-view [character]="characterService.pc"></skills-view>-->
+<!--</template>-->
+<!--<template bs-tab-panel name="test">-->
+<!--<character-view [character]="characterService.pc"></character-view>-->
+<!--&lt;!&ndash;<button id="button" (click)="printCharacter()">Test Character!</button>&ndash;&gt;-->
+<!--</template>-->
+<!--</bs-tab-content>-->
 
 <bs-tabs #tabs>
     <template bsTab [active]="true" select="basicsView">
-      Basics
+      <div class="testy">Basics</div>
     </template>
     <template bsTab select="abilitiesView">
-      Abilities
+      <div class="testy">Abilities</div>
     </template>
     <template bsTab select="classView">
       Classes
@@ -87,4 +154,3 @@
   <race-view [rList]="raceService.raceList" [pc_in_race]="characterService.pc"></race-view>
 
 </div-->
-

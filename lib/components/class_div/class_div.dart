@@ -1,7 +1,7 @@
 import'package:angular2/angular2.dart';
 import 'package:ng_bootstrap/ng_bootstrap.dart';
+//import 'package:ng_bootstrap/components/collapse/collapse.dart';
 import 'package:ng_bootstrap/components/collapse/collapse.dart';
-
 import '../../services/logger_service.dart';
 //import '../../services/character_service.dart';
 
@@ -10,7 +10,7 @@ import '../../model/entity.dart';
 
 @Component(selector: 'class-div',
   templateUrl: 'class_div.html',
-  directives: const [Collapse, NG_BOOTSTRAP_DIRECTIVES] //BsCollapseDirective
+  directives: const [BsCollapseDirective, BS_DIRECTIVES] //BsCollapseDirective
 )
 class ClassDiv {
   final LoggerService _log;

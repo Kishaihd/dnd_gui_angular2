@@ -11,7 +11,7 @@ import '../../model/skill.dart';
 
 @Component(selector: 'skills-view',
     templateUrl: 'skills_view.html',
-    directives: const [SkillsDiv, NG_BOOTSTRAP_DIRECTIVES],
+    directives: const [SkillsDiv, BS_DIRECTIVES],
     providers: const []
 )
 class SkillsView {
